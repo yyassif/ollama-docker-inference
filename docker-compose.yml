@@ -25,7 +25,7 @@ services:
     tty: true
 
   nginx:
-    image: nginx:latest
+    image: nginx
     container_name: ollama_nginx
     restart: unless-stopped
     volumes:
