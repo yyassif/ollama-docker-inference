@@ -18,11 +18,11 @@ services:
     #             - gpu
 
     # Uncomment below to expose Ollama API outside the container stack
-    # ports:
-    #   - 11434:11434
+    ports:
+      - 11435:11434
     volumes:
       - ollama_data:/root/.ollama
-    tty: true
+    # tty: true
 
   nginx:
     image: nginx
