@@ -1,0 +1,13 @@
+/docker-entrypoint.sh: Configuration complete; ready for start up
+192.168.48.1 - - [07/Aug/2024:12:04:46 +0000] "POST /v1/chat/completions HTTP/1.1" Status: 401 - "Bearer yassif+NiAyz2OCU97Jq2CRY5vzWqEk0jLrIkSd0zSMrviASL71R" Auth Token: yassif+NiAyz2OCU97Jq2CRY5vzWqEk0jLrIkSd0zSMrviASL71R - Client Name:  "OpenAI/Python 1.40.0" "-"
+192.168.48.1 - - [07/Aug/2024:12:04:48 +0000] "POST /v1/chat/completions HTTP/1.1" Status: 401 - "Bearer yassif+NiAyz2OCU97Jq2CRY5vzWqEk0jLrIkSd0zSMrviASL71R" Auth Token: yassif+NiAyz2OCU97Jq2CRY5vzWqEk0jLrIkSd0zSMrviASL71R - Client Name:  "OpenAI/Python 1.40.0" "-"
+192.168.48.1 - - [07/Aug/2024:12:05:00 +0000] "POST /v1/chat/completions HTTP/1.1" Status: 401 - "Bearer ahojaksemas" Auth Token: ahojaksemas - Client Name:  "OpenAI/Python 1.40.0" "-"
+192.168.48.1 - - [07/Aug/2024:12:09:45 +0000] "POST /v1/chat/completions HTTP/1.1" Status: 401 - "Bearer ahojaksemas" Auth Token: ahojaksemas - Client Name:  "OpenAI/Python 1.40.0" "-"
+192.168.48.1 - - [07/Aug/2024:12:09:50 +0000] "POST /v1/chat/completions HTTP/1.1" Status: 401 - "Bearer ahojaksemas" Auth Token: ahojaksemas - Client Name:  "OpenAI/Python 1.40.0" "-"
+192.168.48.1 - - [07/Aug/2024:12:09:52 +0000] "POST /v1/chat/completions HTTP/1.1" Status: 401 - "Bearer ahojaksemas" Auth Token: ahojaksemas - Client Name:  "OpenAI/Python 1.40.0" "-"
+192.168.48.1 - - [07/Aug/2024:12:10:18 +0000] "POST /v1/chat/completions HTTP/1.1" Status: 401 - "Bearer ahojaksemas" Auth Token: ahojaksemas - Client Name:  "OpenAI/Python 1.40.0" "-"
+192.168.48.1 - - [07/Aug/2024:12:10:20 +0000] "POST /v1/chat/completions HTTP/1.1" Status: 401 - "Bearer ahojaksemas" Auth Token: ahojaksemas - Client Name:  "OpenAI/Python 1.40.0" "-"
+
+
+
+192.168.80.1 - - [07/Aug/2024:12:14:15 +0000] "POST /v1/chat/completions HTTP/1.1" Status: 200 - "Bearer ahojaksemas" Auth Token: ahojaksemas - Client Name:  "OpenAI/Python 1.40.0" "-"
