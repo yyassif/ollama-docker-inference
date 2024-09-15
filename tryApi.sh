@@ -1,1 +1,0 @@
-curl -I 'http://localhost:5050/' --header 'apikey: yassif+NiAyz2OCU97Jq2CRY5vzWqEk0jLrIkSd0zSMrviASL71R'

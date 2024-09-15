@@ -64,9 +64,22 @@ You can find the installation documentation [here](https://docs.docker.com/engin
   sudo chown -R $USER:docker /var/run/docker
   ```
 
-## Installation
+## Installation ⚙️
 
-Since we're relying on docker, and we've installed docker by now.
+Since we're relying on Docker, and we've installed Docker by now.
+
+### SELinux Consideration (For Linux Users)
+
+If you're using SELinux on your system, you need to adjust the file security contexts to ensure your containerized services can access the necessary configuration files. Run the following commands before starting the container:
+
+```bash
+sudo chcon -Rt svirt_sandbox_file_t ./nginx.conf
+sudo chcon -Rt svirt_sandbox_file_t ./apikeys.conf
+```
+
+These commands modify the SELinux file context to allow your Docker container to access the `nginx.conf` and `apikeys.conf` files.
+
+### Spin up the Docker instance.
 
 Run the following command to get your project running in one second.
 
@@ -74,23 +87,102 @@ Run the following command to get your project running in one second.
 docker compose up -d
 ```
 
-To test the inference Api run the following shell script (It outputs: _Ollama is running_):
+### Generate the Secret Key:
+
+Before running the project, you need to generate a secret key. Use the ./gen-secret-key.sh script to create this key:
 
 ```bash
-bash tryApi.sh
+bash ./gen-secret-key.sh
 ```
 
-The above script runs the following script:
+After generating the secret key, you need to add it to the `apikeys.conf` file. The format should be:
 
 ```bash
-curl -I 'http://localhost:5050/' --header 'apikey: yassif+NiAyz2OCU97Jq2CRY5vzWqEk0jLrIkSd0zSMrviASL71R'
+  "your_secret_key" "your_username";
 ```
+
+For example:
+
+```bash
+"secret-cd443ce0628a6e333a82T3BlbkFJcc0da99bbefe734a657f" "tomyjany"
+```
+
+### Test the Inference API
+
+The inference API supports both `ApiKey` and `Bearer` headers.
+
+#### Via the `curl` Command:
+
+To test the inference Api run the shell curl command (It should output: _Ollama is running_):
+
+```bash
+curl -I 'http://localhost:5050' -H 'apikey: secret-e24827bf59bac39e5900T3BlbkFJ3580c6008f369cad46f8'
+```
+
+Or,
+
+```bash
+curl -I 'http://localhost:5050' -H 'Authorization: Bearer secret-e24827bf59bac39e5900T3BlbkFJ3580c6008f369cad46f8'
+```
+
+
+
+#### Via the OpenAI-API Compatibility:
+
+Ollama now has built-in compatibility with the OpenAI Chat Completions API, making it possible to use more tooling and applications with Ollama locally.
+
+* OpenAI Python Library:
+
+```python
+import OpenAI from 'openai'
+
+const openai = new OpenAI({
+  baseURL: 'http://localhost:5050/v1',
+  apiKey: 'secret-e24827bf59bac39e5900T3BlbkFJ3580c6008f369cad46f8', 
+})
+
+response = client.chat.completions.create(
+  model="llama2",
+  messages=[
+    {"role": "system", "content": "You are an assistant in coding."},
+    {"role": "user", "content": "What year was Python invented?"},
+    {"role": "assistant", "content": "Python was first released on February 20, 1991."},
+    {"role": "user", "content": "What big features it had?"}
+  ]
+)
+print(response.choices[0].message.content)
+```
+
+* OpenAI JavaScript Library:
+
+```js
+import OpenAI from 'openai'
+
+const openai = new OpenAI({
+  baseURL: 'http://localhost:5050/v1',
+  apiKey: 'secret-e24827bf59bac39e5900T3BlbkFJ3580c6008f369cad46f8',
+})
+
+const completion = await openai.chat.completions.create({
+  model: 'llama2',
+  messages: [
+    { role: "system", content: "You are an assistant in coding." },
+    { role: "user", content: "What year was Python invented?" },
+    { role: "assistant", content: "Python was first released on February 20, 1991." },
+    { role: "user", content: "What big features it had?" },
+  ],
+})
+
+console.log(completion.choices[0].message.content)
+```
+
+### Shut Down the Project
+
+To shut down the project, run:
 
 ```bash
 docker compose down
 ```
-
-To shutdown the project:
 
 ## License 📄
 

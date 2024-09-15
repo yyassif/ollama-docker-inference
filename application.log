@@ -1,0 +1,2 @@
+172.18.0.1 - - [15/Sep/2024:04:04:58 +0000] "HEAD / HTTP/1.1" Status: 401 - "-" Auth Token: secret-cd443ce0628a6e333a82T3BlbkFJcc0da99bbefe734a657q - Client Name:  "curl/8.10.0" "-"
+172.18.0.1 - - [15/Sep/2024:04:05:07 +0000] "HEAD / HTTP/1.1" Status: 200 - "Bearer secret-cd443ce0628a6e333a82T3BlbkFJcc0da99bbefe734a657f" Auth Token: secret-cd443ce0628a6e333a82T3BlbkFJcc0da99bbefe734a657f - Client Name: tomyjany "curl/8.10.0" "-"
