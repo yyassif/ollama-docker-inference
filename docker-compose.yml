@@ -1,4 +1,4 @@
-version: "3.8"
+name: ollama
 
 services:
   ollama:
@@ -17,10 +17,12 @@ services:
     #             - gpu
 
     # Uncomment below to expose Ollama API outside the container stack
-    ports:
-      - 11435:11434
+    # ports:
+    #   - 11435:11434
     volumes:
       - ollama_data:/root/.ollama
+    networks:
+      - ollama-net
     # tty: true
 
   nginx:
@@ -30,8 +32,17 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./apikeys.conf:/etc/nginx/apikeys.conf:ro
+      - ./application.log:/var/log/nginx/access.log
+      - ./application.log:/var/log/nginx/auth_access.log
     ports:
       - 5050:5050
+    networks:
+      - ollama-net
 
 volumes:
   ollama_data:
+
+networks:
+  ollama-net:
+    driver: bridge
+

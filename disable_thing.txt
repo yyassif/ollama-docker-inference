@@ -1,3 +1,0 @@
-sudo chcon -Rt svirt_sandbox_file_t ./nginx.conf
-sudo chcon -Rt svirt_sandbox_file_t ./apikeys.conf
-
